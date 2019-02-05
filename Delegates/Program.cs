@@ -14,12 +14,21 @@ namespace Delegates
             Func<int> cr = Console.Read;
             
             cw("1");
-            cw += writeNumber;
+            cw += delegate (string r) { Console.WriteLine(r + r); };
             cw("2");
             cw -= Console.WriteLine;
             cw("3");
-
             cr();
+
+            List<Roman> romany = new List<Roman>();
+            romany.Add(new Roman
+            {
+                Name = "Prawdziwy Roman" // matody anonimowe - tworzymy obikt w metodzie
+            });
+
+            Roman roman = new Roman();
+            roman.Name = "ddd";
+            romany.Add(roman);
         }
 
         static void writeNumber(string strNumber)
@@ -27,5 +36,10 @@ namespace Delegates
             //logika
             Console.Write($"Podany string jest liczbą {strNumber}");
         }
+    }
+
+    class Roman
+    {
+        public string Name { get; set; }
     }
 }
