@@ -11,13 +11,21 @@ namespace Delegates
         static void Main(string[] args)
         {
             Action<string> cw = Console.WriteLine;
+            Action<int, int> x = Sum;
             Func<int> cr = Console.Read;
-            
+
+
             cw("1");
-            cw += delegate (string r) { Console.WriteLine(r + r); };
+            cw += r => Console.WriteLine(r + r); //cw += delegate (string r) { Console.WriteLine(r + r); };
+            x += (a, b) => Console.WriteLine(a -b); 
+            cr = () => Console.Read();
+
+
             cw("2");
             cw -= Console.WriteLine;
             cw("3");
+            Console.WriteLine();
+            x(3, 2);
             cr();
 
             List<Roman> romany = new List<Roman>();
@@ -35,6 +43,10 @@ namespace Delegates
         {
             //logika
             Console.Write($"Podany string jest liczbą {strNumber}");
+        }
+        static void Sum (int a, int b)
+        {
+            Console.WriteLine(a + b);
         }
     }
 
