@@ -17,7 +17,16 @@ namespace Delegates
 
             cw("1");
             cw += r => Console.WriteLine(r + r); //cw += delegate (string r) { Console.WriteLine(r + r); };
-            x += (a, b) => Console.WriteLine(a -b); 
+            x += (a, b) => Console.WriteLine(a -b);
+            x += (a, b) =>
+            {
+                if (a > 1 && b != 0)
+                    Console.WriteLine(a / b);
+                if (a % b == 0 )
+                    Console.WriteLine("Liczba parzysta");
+                if (a % b != 0)
+                    Console.WriteLine("Liczba nieparzysta");
+            };
             cr = () => Console.Read();
 
 
@@ -25,7 +34,7 @@ namespace Delegates
             cw -= Console.WriteLine;
             cw("3");
             Console.WriteLine();
-            x(3, 2);
+            x(11, 3);
             cr();
 
             List<Roman> romany = new List<Roman>();
